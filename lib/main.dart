@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:learn_flutter_discuss_app/config/app_color.dart';
 import 'package:learn_flutter_discuss_app/config/app_route.dart';
+import 'package:learn_flutter_discuss_app/controllers/c_account.dart';
+import 'package:learn_flutter_discuss_app/controllers/c_explore.dart';
+import 'package:learn_flutter_discuss_app/controllers/c_feed.dart';
+import 'package:learn_flutter_discuss_app/controllers/c_home.dart';
+import 'package:learn_flutter_discuss_app/controllers/c_my_topic.dart';
+import 'package:learn_flutter_discuss_app/controllers/c_user.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   await initializeDateFormatting('id_ID');
@@ -15,17 +22,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: AppColor.primary,
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: AppColor.primary,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CUser>(create: (_) => CUser()),
+        ChangeNotifierProvider<CHome>(create: (_) => CHome()),
+        ChangeNotifierProvider<CFeed>(create: (_) => CFeed()),
+        ChangeNotifierProvider<CExplore>(create: (_) => CExplore()),
+        ChangeNotifierProvider<CMyTopic>(create: (_) => CMyTopic()),
+        ChangeNotifierProvider<CAccount>(create: (_) => CAccount()),
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: AppColor.primary,
+          colorScheme: const ColorScheme.light().copyWith(
+            primary: AppColor.primary,
+          ),
+          // useMaterial3: true,
         ),
-        // useMaterial3: true,
+        routerConfig: AppRoute.routeConfig,
       ),
-      routerConfig: AppRoute.routeConfig,
     );
   }
 }

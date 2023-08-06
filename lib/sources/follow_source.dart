@@ -4,6 +4,7 @@ import 'package:d_method/d_method.dart';
 import 'package:http/http.dart';
 
 import '../config/api.dart';
+import '../models/user.dart';
 
 class FollowSource {
   static Future<bool> checkIsFollowing(
@@ -52,6 +53,52 @@ class FollowSource {
     } catch (e) {
       DMethod.printTitle('Follow Source - Unfollow', e.toString());
       return false;
+    }
+  }
+
+  static Future<List<Users>> readFollower(String idUser) async {
+    String url = '${Api.follow}/read_follower.php';
+
+    try {
+      Response response = await Client().post(Uri.parse(url), body: {
+        'id_user': idUser,
+      });
+      DMethod.printTitle('follow Source - Read Follower', response.body);
+      Map responseBody = jsonDecode(response.body);
+      if (responseBody['success']) {
+        List list = responseBody['data'];
+        return list.map((e) {
+          Map<String, dynamic> item = Map<String, dynamic>.from(e);
+          return Users.fromJson(item);
+        }).toList();
+      }
+      return [];
+    } catch (e) {
+      DMethod.printTitle('follow Source - Read Follower', e.toString());
+      return [];
+    }
+  }
+
+  static Future<List<Users>> readFollowing(String idUser) async {
+    String url = '${Api.follow}/read_following.php';
+
+    try {
+      Response response = await Client().post(Uri.parse(url), body: {
+        'id_user': idUser,
+      });
+      DMethod.printTitle('follow Source - Read Following', response.body);
+      Map responseBody = jsonDecode(response.body);
+      if (responseBody['success']) {
+        List list = responseBody['data'];
+        return list.map((e) {
+          Map<String, dynamic> item = Map<String, dynamic>.from(e);
+          return Users.fromJson(item);
+        }).toList();
+      }
+      return [];
+    } catch (e) {
+      DMethod.printTitle('follow Source - Read Following', e.toString());
+      return [];
     }
   }
 }
