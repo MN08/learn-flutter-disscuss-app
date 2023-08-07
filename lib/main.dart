@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:learn_flutter_discuss_app/config/app_color.dart';
-import 'package:learn_flutter_discuss_app/config/app_route.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_account.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_explore.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_feed.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_home.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_my_topic.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_user.dart';
+import 'config/app_color.dart';
+import 'config/app_route.dart';
+import 'controllers/c_account.dart';
+import 'controllers/c_explore.dart';
+import 'controllers/c_feed.dart';
+import 'controllers/c_home.dart';
+import 'controllers/c_my_topic.dart';
+import 'controllers/c_user.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
