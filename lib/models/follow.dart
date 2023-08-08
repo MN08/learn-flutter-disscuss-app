@@ -14,7 +14,7 @@ class Follows {
   });
 
   factory Follows.fromJson(Map<String, dynamic> json) => Follows(
-        id: json["_id"],
+        id: json["id"],
         fromIdUser: json["from_id_user"],
         toIdUser: json["to_id_user"],
         createdAt: json["created_at"],
@@ -22,7 +22,7 @@ class Follows {
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
+        "id": id,
         "from_id_user": fromIdUser,
         "to_id_user": toIdUser,
         "created_at": createdAt,

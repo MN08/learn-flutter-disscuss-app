@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:learn_flutter_discuss_app/models/user.dart';
+import '../models/user.dart';
 
 class CUser extends ChangeNotifier {
   Users? _data;

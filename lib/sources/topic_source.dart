@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:d_method/d_method.dart';
 import 'package:http/http.dart';
-import 'package:learn_flutter_discuss_app/models/topic.dart';
 
+import '../models/topic.dart';
 import '../config/api.dart';
 
 class TopicSource {

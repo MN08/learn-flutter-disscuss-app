@@ -16,7 +16,7 @@ class Users {
   });
 
   factory Users.fromJson(Map<String, dynamic> json) => Users(
-        id: json["_id"],
+        id: json["id"],
         username: json["username"],
         password: json["password"],
         image: json["image"],
@@ -25,7 +25,7 @@ class Users {
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
+        "id": id,
         "username": username,
         "password": password,
         "image": image,

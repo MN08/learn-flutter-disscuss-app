@@ -26,7 +26,7 @@ class Comments {
   });
 
   factory Comments.fromJson(Map<String, dynamic> json) => Comments(
-        id: json["_id"],
+        id: json["id"],
         idTopic: json["id_topic"],
         fromIdUser: json["from_id_user"],
         toIdUser: json["to_id_user"],
@@ -39,7 +39,7 @@ class Comments {
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
+        "id": id,
         "id_topic": idTopic,
         "from_id_user": fromIdUser,
         "to_id_user": toIdUser,

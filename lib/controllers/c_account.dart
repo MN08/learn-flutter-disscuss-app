@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:learn_flutter_discuss_app/sources/user_source.dart';
+import '../sources/user_source.dart';
 
 class CAccount extends ChangeNotifier {
   Map<String, dynamic> _stat = {

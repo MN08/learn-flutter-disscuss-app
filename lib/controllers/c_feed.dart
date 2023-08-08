@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:learn_flutter_discuss_app/models/topic.dart';
-import 'package:learn_flutter_discuss_app/sources/topic_source.dart';
+import '../models/topic.dart';
+import '../sources/topic_source.dart';
 
 class CFeed extends ChangeNotifier {
   List<Topics> _topics = [];

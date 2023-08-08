@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:learn_flutter_discuss_app/models/topic.dart';
-import 'package:learn_flutter_discuss_app/models/user.dart';
-import 'package:learn_flutter_discuss_app/sources/topic_source.dart';
-import 'package:learn_flutter_discuss_app/sources/user_source.dart';
+import '../models/topic.dart';
+import '../models/user.dart';
+import '../sources/topic_source.dart';
+import '../sources/user_source.dart';
 
 class CSearch extends ChangeNotifier {
   List<String> get filters => ['Topic', 'User'];

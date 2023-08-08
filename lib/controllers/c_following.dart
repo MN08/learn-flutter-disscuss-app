@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:learn_flutter_discuss_app/models/user.dart';
-import 'package:learn_flutter_discuss_app/sources/follow_source.dart';
+import '../models/user.dart';
+import '../sources/follow_source.dart';
 
 class CFollowing extends ChangeNotifier {
   List<Users> _following = [];

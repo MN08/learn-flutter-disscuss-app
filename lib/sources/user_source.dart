@@ -1,14 +1,13 @@
 import 'dart:convert';
 
-import 'package:learn_flutter_discuss_app/config/api.dart';
 import 'package:http/http.dart';
 import 'package:d_method/d_method.dart';
-import 'package:learn_flutter_discuss_app/models/user.dart';
+import '../config/api.dart';
+import '../models/user.dart';
 
 class UserSource {
   static Future<Map> register(String username, String password) async {
     String url = '${Api.user}/register.php';
-
     try {
       Response response = await Client().post(Uri.parse(url), body: {
         'username': username,

@@ -22,7 +22,7 @@ class Topics {
   });
 
   factory Topics.fromJson(Map<String, dynamic> json) => Topics(
-        id: json["_id"],
+        id: json["id"],
         title: json["title"],
         description: json["description"],
         images: json["images"],
@@ -33,7 +33,7 @@ class Topics {
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
+        "id": id,
         "title": title,
         "description": description,
         "images": images,

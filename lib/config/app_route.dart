@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_add_topic.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_comment.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_follower.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_following.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_profile.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_search.dart';
-import 'package:learn_flutter_discuss_app/pages/error_page.dart';
-import 'package:learn_flutter_discuss_app/pages/register_page.dart';
+import '../controllers/c_add_topic.dart';
+import '../controllers/c_comment.dart';
+import '../controllers/c_follower.dart';
+import '../controllers/c_following.dart';
+import '../controllers/c_profile.dart';
+import '../controllers/c_search.dart';
+import '../pages/error_page.dart';
+import '../pages/register_page.dart';
 import 'package:provider/provider.dart';
 import '../config/session.dart';
 import '../models/user.dart';
@@ -34,12 +34,15 @@ class AppRoute {
       redirect: (context, state) async {
         Users? user = await Session.getUser();
         if (user == null) {
-          if (state.name == login || state.name == register) {
+          if (state.uri.toString() == login ||
+              state.uri.toString() == register) {
             return null;
+          } else {
+            return login;
           }
-          return login;
+        } else {
+          return null;
         }
-        return null;
       },
       routes: [
         GoRoute(
@@ -52,7 +55,7 @@ class AppRoute {
         ),
         GoRoute(
           path: register,
-          builder: (context, state) => const RegisterPage(),
+          builder: (context, state) => RegisterPage(),
         ),
         GoRoute(
           path: addTopic,
