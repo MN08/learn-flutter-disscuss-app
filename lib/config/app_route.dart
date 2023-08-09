@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import '../config/session.dart';
 import '../controllers/c_add_topic.dart';
 import '../controllers/c_comment.dart';
 import '../controllers/c_follower.dart';
 import '../controllers/c_following.dart';
 import '../controllers/c_profile.dart';
 import '../controllers/c_search.dart';
+import '../models/user.dart';
 import '../pages/error_page.dart';
 import '../pages/register_page.dart';
-import 'package:provider/provider.dart';
-import '../config/session.dart';
-import '../models/user.dart';
+import '../pages/add_topic.dart';
 import '../pages/home_page.dart';
 import '../pages/login_page.dart';
 
@@ -61,7 +62,7 @@ class AppRoute {
           path: addTopic,
           builder: (context, state) => ChangeNotifierProvider(
             create: (_) => CAddTopic(),
-            child: const Scaffold(),
+            child: AddTopic(),
           ),
         ),
         GoRoute(
