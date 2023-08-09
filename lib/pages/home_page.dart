@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'fragment/account_fragment.dart';
 import 'fragment/explore_fragment.dart';
 import 'fragment/feed_fragment.dart';
 import 'fragment/my_topic_fragment.dart';
+import '../config/app_route.dart';
 import '../controllers/c_home.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,7 +42,9 @@ class HomePage extends StatelessWidget {
           child: menu[_.indexMenu]['view'],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            context.push(AppRoute.addTopic);
+          },
           mini: true,
           tooltip: 'Create New Topic',
           child: const Icon(Icons.create),
