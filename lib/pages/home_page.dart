@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+
+import '../config/app_route.dart';
+import '../controllers/c_home.dart';
 import 'fragment/account_fragment.dart';
 import 'fragment/explore_fragment.dart';
 import 'fragment/feed_fragment.dart';
 import 'fragment/my_topic_fragment.dart';
-import '../config/app_route.dart';
-import '../controllers/c_home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

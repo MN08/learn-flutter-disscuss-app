@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:d_method/d_method.dart';
 import 'package:http/http.dart';
 
-import '../models/topic.dart';
 import '../config/api.dart';
+import '../models/topic.dart';
 
 class TopicSource {
   static Future<bool> create(String title, String description, String images,
