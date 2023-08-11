@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
 import 'package:d_method/d_method.dart';
+import 'package:http/http.dart';
+
 import '../config/api.dart';
 import '../models/user.dart';
 

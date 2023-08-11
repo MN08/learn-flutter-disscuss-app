@@ -1,8 +1,8 @@
 import 'package:d_info/d_info.dart';
 import 'package:flutter/material.dart';
 
-import '../sources/follow_source.dart';
 import '../models/topic.dart';
+import '../sources/follow_source.dart';
 import '../sources/topic_source.dart';
 import '../sources/user_source.dart';
 
