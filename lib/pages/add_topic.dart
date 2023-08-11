@@ -1,10 +1,18 @@
+import 'dart:convert';
+
 import 'package:d_button/d_button.dart';
+import 'package:d_info/d_info.dart';
 import 'package:d_input/d_input.dart';
 import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:learn_flutter_discuss_app/controllers/c_add_topic.dart';
 import 'package:provider/provider.dart';
+import '../controllers/c_add_topic.dart';
+import '../controllers/c_home.dart';
+import '../controllers/c_my_topic.dart';
+import '../controllers/c_user.dart';
+import '../sources/topic_source.dart';
 
 class AddTopic extends StatelessWidget {
   AddTopic({super.key});
@@ -12,7 +20,24 @@ class AddTopic extends StatelessWidget {
   final controllerTItle = TextEditingController();
   final controllerDescription = TextEditingController();
 
-  addNewTopic(BuildContext context) {}
+  addNewTopic(BuildContext context) {
+    TopicSource.create(
+      controllerTItle.text,
+      controllerDescription.text,
+      jsonEncode(context.read<CAddTopic>().imageNames),
+      jsonEncode(context.read<CAddTopic>().imageBase64Codes),
+      context.read<CUser>().data!.id,
+    ).then((success) {
+      if (success) {
+        DInfo.snackBarSuccess(context, 'Add New Topic Success');
+        context.read<CHome>().indexMenu = 2;
+        context.read<CMyTopic>().setTopics(context.read<CUser>().data!.id);
+        context.pop();
+      } else {
+        DInfo.snackBarError(context, 'Failed to add topic');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
