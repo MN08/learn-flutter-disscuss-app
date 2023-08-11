@@ -26,6 +26,8 @@ class AppRoute {
   static const follower = '/follower';
   static const following = '/following';
   static const comment = '/comment';
+  static const detailTopic = '/detail-topic';
+  static const updateTopic = '/update-topic';
 
   static GoRouter routeConfig = GoRouter(
       errorBuilder: (context, state) => ErrorPage(
