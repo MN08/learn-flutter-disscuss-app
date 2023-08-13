@@ -5,7 +5,7 @@ class AppFormat {
     return NumberFormat.compact().format(number);
   }
 
-  static String fullDateTine(String date) {
+  static String fullDateTime(String date) {
     return DateFormat('EEE, d MM yy | HH:mm').format(DateTime.parse(date));
   }
 
@@ -15,7 +15,7 @@ class AppFormat {
     DateTime yesterday = now.subtract(const Duration(days: 1));
 
     if (dateTime.isBefore(yesterday)) {
-      return fullDateTine(date);
+      return fullDateTime(date);
     } else {
       int hour = now.difference(dateTime).inHours;
       if (hour == 1) {
