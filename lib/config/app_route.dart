@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:learn_flutter_discuss_app/models/topic.dart';
+import 'package:learn_flutter_discuss_app/pages/detail_topic_page.dart';
 import 'package:provider/provider.dart';
 
 import '../config/session.dart';
@@ -102,6 +104,11 @@ class AppRoute {
             create: (_) => CComment(),
             child: const Scaffold(),
           ),
+        ),
+        GoRoute(
+          path: detailTopic,
+          builder: (context, state) =>
+              DetailTopicPage(topic: state.extra as Topics),
         ),
       ]);
 }
