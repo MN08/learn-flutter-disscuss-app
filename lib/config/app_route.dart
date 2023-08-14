@@ -1,7 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:learn_flutter_discuss_app/models/topic.dart';
-import 'package:learn_flutter_discuss_app/pages/detail_topic_page.dart';
+import '../pages/comment_page.dart';
+import '../pages/follower_page.dart';
+import '../pages/following_page.dart';
+import '../pages/profile_page.dart';
+import '../pages/search_page.dart';
+import '../pages/update_topic_page.dart';
+import '../models/topic.dart';
+import '../pages/detail_topic_page.dart';
 import 'package:provider/provider.dart';
 
 import '../config/session.dart';
@@ -32,83 +37,88 @@ class AppRoute {
   static const updateTopic = '/update-topic';
 
   static GoRouter routeConfig = GoRouter(
-      errorBuilder: (context, state) => ErrorPage(
-            title: 'Error Happen',
-            description: state.error.toString(),
-          ),
-      debugLogDiagnostics: true,
-      redirect: (context, state) async {
-        Users? user = await Session.getUser();
-        if (user == null) {
-          if (state.uri.toString() == login ||
-              state.uri.toString() == register) {
-            return null;
-          } else {
-            return login;
-          }
-        } else {
+    errorBuilder: (context, state) => ErrorPage(
+      title: 'Error Happen',
+      description: state.error.toString(),
+    ),
+    debugLogDiagnostics: true,
+    redirect: (context, state) async {
+      Users? user = await Session.getUser();
+      if (user == null) {
+        if (state.uri.toString() == login || state.uri.toString() == register) {
           return null;
+        } else {
+          return login;
         }
-      },
-      routes: [
-        GoRoute(
-          path: home,
-          builder: (context, state) => const HomePage(),
+      } else {
+        return null;
+      }
+    },
+    routes: [
+      GoRoute(
+        path: home,
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: login,
+        builder: (context, state) => LoginPage(),
+      ),
+      GoRoute(
+        path: register,
+        builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(
+        path: addTopic,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CAddTopic(),
+          child: AddTopic(),
         ),
-        GoRoute(
-          path: login,
-          builder: (context, state) => LoginPage(),
+      ),
+      GoRoute(
+        path: profile,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CProfile(),
+          child: ProfilePage(user: state.extra as Users),
         ),
-        GoRoute(
-          path: register,
-          builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(
+        path: search,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CSearch(),
+          child: const SearchPage(),
         ),
-        GoRoute(
-          path: addTopic,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => CAddTopic(),
-            child: AddTopic(),
-          ),
+      ),
+      GoRoute(
+        path: follower,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CFollower(),
+          child: FollowerPage(user: state.extra as Users),
         ),
-        GoRoute(
-          path: profile,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => CProfile(),
-            child: const Scaffold(),
-          ),
+      ),
+      GoRoute(
+        path: following,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CFollowing(),
+          child: FollowingPage(user: state.extra as Users),
         ),
-        GoRoute(
-          path: search,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => CSearch(),
-            child: const Scaffold(),
-          ),
+      ),
+      GoRoute(
+        path: comment,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CComment(),
+          child: CommentPage(topic: state.extra as Topics),
         ),
-        GoRoute(
-          path: follower,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => CFollower(),
-            child: const Scaffold(),
-          ),
-        ),
-        GoRoute(
-          path: following,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => CFollowing(),
-            child: const Scaffold(),
-          ),
-        ),
-        GoRoute(
-          path: comment,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => CComment(),
-            child: const Scaffold(),
-          ),
-        ),
-        GoRoute(
-          path: detailTopic,
-          builder: (context, state) =>
-              DetailTopicPage(topic: state.extra as Topics),
-        ),
-      ]);
+      ),
+      GoRoute(
+        path: detailTopic,
+        builder: (context, state) =>
+            DetailTopicPage(topic: state.extra as Topics),
+      ),
+      GoRoute(
+        path: updateTopic,
+        builder: (context, state) =>
+            UpdateTopicPage(topic: state.extra as Topics),
+      ),
+    ],
+  );
 }

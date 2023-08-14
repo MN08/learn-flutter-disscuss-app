@@ -62,7 +62,7 @@ class TopicSource {
   }
 
   static Future<List<Topics>> readExplore() async {
-    String url = '${Api.topic}/read_explor.php';
+    String url = '${Api.topic}/read_explore.php';
 
     try {
       Response response = await Client().get(Uri.parse(url));

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import '../models/topic.dart';
 import '../models/user.dart';
 import '../sources/topic_source.dart';
@@ -29,7 +30,7 @@ class CSearch extends ChangeNotifier {
   }
 
   List<Users> _users = [];
-  List<Users> get useres => _users;
+  List<Users> get users => _users;
   setUsers(String query) async {
     _users = await UserSource.search(query);
     notifyListeners();

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import '../models/user.dart';
 
 class CUser extends ChangeNotifier {

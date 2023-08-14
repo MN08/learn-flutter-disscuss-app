@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'config/session.dart';
+import 'package:provider/provider.dart';
+
 import 'config/app_color.dart';
 import 'config/app_route.dart';
+import 'config/session.dart';
 import 'controllers/c_account.dart';
 import 'controllers/c_explore.dart';
 import 'controllers/c_feed.dart';
 import 'controllers/c_home.dart';
 import 'controllers/c_my_topic.dart';
 import 'controllers/c_user.dart';
-import 'package:provider/provider.dart';
 
 Future<void> main() async {
   await initializeDateFormatting('id_ID');
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         });
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'Flutter Discuss App',
           theme: ThemeData(
             primaryColor: AppColor.primary,
             colorScheme: const ColorScheme.light().copyWith(

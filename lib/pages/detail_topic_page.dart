@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:d_button/d_button.dart';
 import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:learn_flutter_discuss_app/config/app_format.dart';
-import 'package:learn_flutter_discuss_app/config/app_route.dart';
-import 'package:learn_flutter_discuss_app/models/topic.dart';
+import '../config/app_format.dart';
+import '../models/topic.dart';
 
 import '../config/api.dart';
 
@@ -110,7 +108,7 @@ class DetailTopicPage extends StatelessWidget {
                               Expanded(
                                 child: InteractiveViewer(
                                   child: Image.network(
-                                    '${Api.imageTopic}/${e}',
+                                    '${Api.imageTopic}/$e',
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -124,7 +122,7 @@ class DetailTopicPage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        '${Api.imageTopic}/${e}',
+                        '${Api.imageTopic}/$e',
                         fit: BoxFit.contain,
                       ),
                     ),

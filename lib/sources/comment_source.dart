@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 import '../config/api.dart';
 import '../models/comment.dart';
 
-class CommnetSource {
+class CommentSource {
   static Future<bool> create(String comment, String image, String base64code,
       String fromIdUser, String toIdUser, String idTopic) async {
     String url = '${Api.comment}/create.php';

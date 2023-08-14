@@ -11,10 +11,10 @@ import '../sources/comment_source.dart';
 class CComment extends ChangeNotifier {
   List<Comments> _comments = [];
   List<Comments> get comments => _comments;
-  setComment(Topics topic) async {
+  setComments(Topics topic) async {
     _image = '';
     _imageBase64Code = '';
-    _comments = await CommnetSource.readComment(topic.id);
+    _comments = await CommentSource.readComment(topic.id);
     setReplyTo(topic.users!);
     notifyListeners();
   }
